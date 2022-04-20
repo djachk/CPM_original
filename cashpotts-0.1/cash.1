@@ -1,0 +1,85 @@
+.TH CASH 1L
+.SH NAME
+CASH \- cellular automata in simulated hardware
+
+.SH DESCRIPTION
+This library allows you develop cellular automata.
+It has a good graphical interface and it is very fast.
+Check the example C programs in the
+.I /local/src/cash/examples
+directory.
+The CASH library is available when you compile with
+.I -lcash -lX11 -lm
+To work with CASH copy an example program, e.g., life.c,
+and the makefile
+from the examples directory into you own directory.
+Then type 
+.I make life
+.SH FILES
+.br
+.B /local/src/cash/manual.ps
+the manual.
+.br
+.B /local/src/cash/examples/*.c
+losts of examples.
+.br
+.B /local/src/cash/examples/makefile
+an example of a makefile.
+.SH CAVEATS
+Recent changes in CASH:
+.TP
+.B Feb 93:
+.br
+.I Motion
+for moving particles around.
+.br
+.I ranmargolus
+the meaning has changed.
+Now all Margolus functions have 6 arguments,
+i.e., there always is an random plane available,
+but to save time you may suppress the actual call to Random();
+.br
+.I Neighbors
+returns an array of nine planes with
+pointers (!) to the nine neighbors.
+The following indexes are predefined:
+ CENTRAL 0
+ NORTH 1 WEST 2 EAST 3 SOUTH 4
+ NORTHWEST 5 NORTHEAST 6 SOUTHWEST 7 SOUTHEAST 8
+
+.TP
+.B June 93:
+.br
+.I RANDOM() and SEED(i)
+for random values.
+.br
+.I one dimensional loops from i=first to i=last
+.br
+.I NewP() and FreeP
+for (de)allocating shifted planes.
+.br
+.I Boundaries()
+for applying the boundary conditions.
+
+.TP
+.B September 93:
+.br
+.I Margolus(), Diffuse(), and Motion()
+are made time dependent
+.br
+.I ColorRandom() ColorDump() and ColorRead()
+
+.TP
+.B March 94:
+.br
+.I DisplayPlane(), DisplayRow(), DisplayBlock().
+.br
+.I PlanePS(), RowPS(), BlockPS().
+.br
+.I option noisebox
+replaced by function 
+.I NoiseBox().
+
+
+.SH AUTHOR
+Rob J de Boer & Alex D Staritsky, Theoretical Biology UU.

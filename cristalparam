@@ -1,0 +1,55 @@
+/****affichage****/
+
+movie		1
+movieinterval	20 // intervalle de temps entre 2 images
+writinginterval	20 // intervalle de temps entre 2 écritures des valeurs
+saveinterval	50000 // intervalle de temps entre 2 sauvegardes de la simulation
+scale		2
+dispersetime	11 // 4980 on doit avoir: dispersetime+annealing_time = k*writinginterval
+affichage		1//0 for white monochrome, 1 for color with number of neighbours, 2 for color with bubble type, 3 for five different colors (large with 6, 7 neighbours, small with 5, 6 neighbours + default).
+				 // Default : make a different color for each bubble.
+
+//initialisation
+
+load		0
+loadname	cristallisation-T3650-size-4-z20-K10000-recuit-8-7-perfect
+fillfactor		1.05	//1.05
+init_config		1
+ncol			350	//1400
+nrow			404	//1616
+line_to_area		11.3	//scaling entre pixel et longueur (valable pour neighbour_energy=20 uniquement) 
+
+polydispersity	1	//1=monodisperse, 2=bidisperse, 3=tridisperse, sinon=polydisperse
+blob			4	//seulement pour les bidisperses: si blob=1, frontière verticale entre petites et grosses bulles; si blob=2, blob central carré; si blob=3, blob central circulaire; et sinon les petites et grosses bulles sont distribuées aléatoirement
+
+//temperature and tempering
+
+temperinginterval	100
+nb_temperature		1
+temperature_min		10
+temperature_max		5000
+
+annealing		0	//1=annealing, sinon parallel tempering
+annealing_time		9
+
+
+//potts
+
+rx					7
+ry					8.08
+target_area 		1000	//110 //choisie de telle sorte que target_area/fillfactor soit un carré parfait
+targetareamu2		0 // il faut targetareamu2 < sqrt[alpha/(1-alpha)]
+alpha				0.5
+area_constraint 		10000
+maxtypes		3			//inutile de le mettre en paramètre ?
+J01			1600
+J11			1600
+J02			1600
+J12			1600
+J22			1600
+neighbour_energy		20
+neighbour_copy				4 //can be 4 or 6 (as your geometry) ; you would proably it equal than neighbour_connected.
+neighbour_connected			4 //can be 4 or 6 (as your geometry)
+totaltime		10000
+
+

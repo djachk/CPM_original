@@ -1,0 +1,13 @@
+This library is based on CASH 2.01 in order to perform Cellular Potts Model
+simulations. 
+Functions have been added to cash, notably for display of cells.
+
+png.c :
+int OpenCellPNG(char*,int,int);
+int PlanePNG(TYPE**,int);
+int CellPlanePNG(TYPE**,TYPE**,int);
+int CloseCellPNG();
+
+x11 :
+int CellPlaneDisplay(TYPE**,TYPE**,int,int,TYPE);
+
